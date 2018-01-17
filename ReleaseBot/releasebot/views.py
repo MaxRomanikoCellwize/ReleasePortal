@@ -13,3 +13,10 @@ def index(request):
 
     }
     return HttpResponse(template.render(context, request))
+
+def release(request, release_id):
+    template = loader.get_template('releasebot/release.html')
+    context = {
+
+    }
+    return HttpResponse(template.render(context, request))
