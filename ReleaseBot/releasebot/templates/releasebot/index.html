@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'releasebot/style.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'releasebot/bootstrap.css' %}" />
     <script src="{% static 'releasebot/vue.js' %}"></script>
+    <script src="{% static 'releasebot/vue-resource.js' %}"></script>
     <script src="{% static 'releasebot/core.js' %}" defer></script>
   </head>
 
@@ -43,7 +44,7 @@
                     <div class="form-group row">
                     <label for="product" class="col-sm-2 col-form-label"><h5>Product</h5></label>
                     <div class="col-sm-10">
-                       <select id="product" class="form-control">
+                       <select id="product" class="form-control" v-model="selectedProduct">
                             {% for product in products %}
                                 <option value="{{ product.id }}">{{product.name}}</option>
                             {% endfor %}
@@ -64,22 +65,24 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row">TGE</th>
-                          <td>17.1</td>
-                          <td>234</td>
+                          <template v-for="build in builds">
+                              <th scope="row">[[build.account]]</th>
+                              <td>[[build.release]]</td>
+                              <td>[[build.buildnumber]]</td>
+                          </template>
                         </tr>
                       </tbody>
                     </table>
                 </div>
             </div>
-            <!--h1 v-bind:title="message">text of hover</h1>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-            </ul-->
+            <div class="row">
+                <img src="{% static 'releasebot/Capture.PNG' %}" style="border: 0px; height:350px;">
+            </div>
         </div>
     </div>
+    <script>
+        var builds = {{builds}};
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>

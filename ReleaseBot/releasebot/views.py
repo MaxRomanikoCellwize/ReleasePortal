@@ -11,13 +11,14 @@ from .models import Products
 # Create your views here.
 def index(request):
     template = loader.get_template('releasebot/index.html')
-    releases = Releases.objects.all().filter(type='official').order_by('-order')
-    weeklys = Releases.objects.all().filter(type='weekly').order_by('-order')
+    #releases = Releases.objects.all().filter(type="Official").order_by('-order')
+    #weeklys = Releases.objects.all().filter(type='Weekly').order_by('-order')
     products = Products.objects.all().order_by('-order')
     context = {
-        'releases': releases,
-        'weeklys': weeklys,
-        'products': products
+        'releases': '',
+        'weeklys': '',
+        'products': products,
+        'builds': '',
     }
     return HttpResponse(template.render(context, request))
 
