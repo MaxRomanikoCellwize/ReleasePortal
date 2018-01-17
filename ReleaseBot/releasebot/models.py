@@ -8,6 +8,7 @@ class Products(models.Model):
     order = models.IntegerField(default=1)
     jenkinsContainer = models.CharField(max_length=200)
 
+
 class Releases(models.Model):
     name = models.CharField(max_length=200)
     order = models.IntegerField(default=1)
@@ -16,11 +17,13 @@ class Releases(models.Model):
     releaseNotes = models.CharField(max_length=200)
     technicalNotes = models.CharField(max_length=200)
 
+
 class ProductReleases(models.Model):
     releaseId = models.ForeignKey(Releases)
     productId = models.ForeignKey(Products)
     jenkinsJobName = models.CharField(max_length=200)
     buildNumber = models.IntegerField
+
 
 class ServicePacks(models.Model):
     name = models.CharField(max_length=200)
@@ -29,9 +32,11 @@ class ServicePacks(models.Model):
     buildNumber = models.IntegerField
     date = models.DateField('date installed')
 
+
 class Accounts(models.Model):
     name = models.CharField(max_length=200)
     order = models.IntegerField(default=1)
+
 
 class AccountReleases(models.Model):
     accountId = models.ForeignKey(Accounts)

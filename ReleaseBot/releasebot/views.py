@@ -3,15 +3,21 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.http import HttpResponse
-
 from django.template import loader
+from .models import Releases
+from .models import Products
 
 
 # Create your views here.
 def index(request):
     template = loader.get_template('releasebot/index.html')
+    releases = Releases.objects.all().filter(type='official').order_by('-order')
+    weeklys = Releases.objects.all().filter(type='weekly').order_by('-order')
+    products = Products.objects.all().order_by('-order')
     context = {
-
+        'releases': releases,
+        'weeklys': weeklys,
+        'products': products
     }
     return HttpResponse(template.render(context, request))
 

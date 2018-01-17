@@ -21,20 +21,19 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <h2>Releases</h2>
+                    <h2 class="text-center">Releases</h2>
                     <div class="list-group limit-height">
-                      <a href="#" class="list-group-item list-group-item-action">18.1</a>
-                      <a href="#" class="list-group-item list-group-item-action">17.12</a>
-                      <a href="#" class="list-group-item list-group-item-action">17.11</a>
-                      <a href="#" class="list-group-item list-group-item-action">17.10</a>
-                      <a href="#" class="list-group-item list-group-item-action">17.9</a>
+                        {% for release in releases %}
+                            <a href="{% url 'release' release.id %}" class="list-group-item list-group-item-action">{{ release.name }}</a>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="col-6">
-                    <h2>Weekly builds</h2>
+                    <h2 class="text-center">Weekly builds</h2>
                     <div class="list-group limit-height">
-                      <a href="#" class="list-group-item list-group-item-action">Weekly Build 2018/1/13</a>
-                      <a href="#" class="list-group-item list-group-item-action">Weekly Build 2018/1/4</a>
+                        {% for release in weeklys %}
+                            <a href="{% url 'release' release.id %}" class="list-group-item list-group-item-action">{{ release.name }}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -45,8 +44,9 @@
                     <label for="product" class="col-sm-2 col-form-label"><h5>Product</h5></label>
                     <div class="col-sm-10">
                        <select id="product" class="form-control">
-                          <option selected>SON_Product</option>
-                          <option value="1">Crowd View</option>
+                            {% for product in products %}
+                                <option value="{{ product.id }}">{{product.name}}</option>
+                            {% endfor %}
                        </select>
                     </div>
                     </div>
