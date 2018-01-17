@@ -1,3 +1,27 @@
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ReleaseBot</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'releasebot/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'releasebot/bootstrap.css' %}" />
+    <script src="{% static 'releasebot/vue.js' %}"></script>
+    <script src="{% static 'releasebot/core.js' %}" defer></script>
+    <script src="{% static 'releasebot/bootstrap.js' %}"></script>
+  </head>
 
-<link rel="stylesheet" type="text/css" href="{% static 'releasebot/style.css' %}" />
+  <body>
+    <div id="app">
+        <div class="container-fluid">
+            <h1 v-bind:title="message">text of hover</h1>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
+    </div>
+  </body>
+</html>
