@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ReleaseBot</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'releasebot/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'releasebot/bootstrap.css' %}" />
+    <script src="{% static 'releasebot/vue.js' %}"></script>
+    <script src="{% static 'releasebot/core.js' %}" defer></script>
+  </head>
+
+  <body>
+    <div id="app">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">SON Release Portal</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="text-center">Releases</h2>
+                    <div class="list-group limit-height">
+                        {% for release in releases %}
+                            <a href="{% url 'release' release.id %}" class="list-group-item list-group-item-action">{{ release.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-6">
+                    <h2 class="text-center">Weekly builds</h2>
+                    <div class="list-group limit-height">
+                        {% for release in weeklys %}
+                            <a href="{% url 'release' release.id %}" class="list-group-item list-group-item-action">{{ release.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group row">
+                    <label for="product" class="col-sm-2 col-form-label"><h5>Product</h5></label>
+                    <div class="col-sm-10">
+                       <select id="product" class="form-control">
+                            {% for product in products %}
+                                <option value="{{ product.id }}">{{product.name}}</option>
+                            {% endfor %}
+                       </select>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Accounts</th>
+                          <th scope="col">Release</th>
+                          <th scope="col">Build number</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">TGE</th>
+                          <td>17.1</td>
+                          <td>234</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--h1 v-bind:title="message">text of hover</h1>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul-->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  </body>
+</html>
