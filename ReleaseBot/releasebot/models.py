@@ -22,14 +22,14 @@ class ProductReleases(models.Model):
     releaseId = models.ForeignKey(Releases)
     productId = models.ForeignKey(Products)
     jenkinsJobName = models.CharField(max_length=200)
-    buildNumber = models.IntegerField
+    buildNumber = models.IntegerField(default=1)
 
 
 class ServicePacks(models.Model):
     name = models.CharField(max_length=200)
     order = models.IntegerField(default=1)
     productReleaseId = models.ForeignKey(ProductReleases)
-    buildNumber = models.IntegerField
+    buildNumber = models.IntegerField(default=1)
     date = models.DateField('date installed')
 
 
