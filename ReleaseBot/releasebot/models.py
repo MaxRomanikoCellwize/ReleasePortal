@@ -44,3 +44,7 @@ class AccountReleases(models.Model):
     target = models.CharField(max_length=50)
     date = models.DateField('date released')
 
+class AccountReleaseServicePack(models.Model):
+    accountReleaseId = models.ForeignKey(AccountReleases)
+    servicePackId = models.ForeignKey(ServicePacks)
+    date = models.DateField('date installed')
