@@ -9,19 +9,82 @@
     <link rel="stylesheet" type="text/css" href="{% static 'releasebot/bootstrap.css' %}" />
     <script src="{% static 'releasebot/vue.js' %}"></script>
     <script src="{% static 'releasebot/core.js' %}" defer></script>
-    <script src="{% static 'releasebot/bootstrap.js' %}"></script>
   </head>
 
   <body>
     <div id="app">
         <div class="container-fluid">
-            <h1 v-bind:title="message">text of hover</h1>
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">SON Release Portal</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <h2>Releases</h2>
+                    <div class="list-group limit-height">
+                      <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                      <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <h2>Weekly builds</h2>
+                    <div class="list-group limit-height">
+                      <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                      <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group row">
+                    <label for="product" class="col-sm-2 col-form-label"><h5>Product</h5></label>
+                    <div class="col-sm-10">
+                       <select id="product" class="form-control">
+                          <option selected>Open this select menu</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                       </select>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Accounts</th>
+                          <th scope="col">Release</th>
+                          <th scope="col">Build number</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">TGE</th>
+                          <td>17.1</td>
+                          <td>234</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--h1 v-bind:title="message">text of hover</h1>
             <ul>
                 <li>1</li>
                 <li>2</li>
                 <li>3</li>
-            </ul>
+            </ul-->
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
   </body>
 </html>
