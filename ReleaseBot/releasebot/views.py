@@ -52,3 +52,17 @@ def account(request, account_id, environment_id, product_id):
         'table': table
     }
     return HttpResponse(template.render(context, request))
+
+def publish_release(request):
+    template = loader.get_template('releasebot/publish_release.html')
+    context = {
+
+    }
+    return HttpResponse(template.render(context, request))
+
+def success(request):
+    template = loader.get_template('releasebot/success.html')
+    context = {
+
+    }
+    return HttpResponse(template.render(context, request))
