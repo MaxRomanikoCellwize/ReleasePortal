@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="text-center">Release 18.1 Details</h1>
+                    <h1 class="text-center">Release {{release.name}} Details</h1>
                 </div>
             </div>
             <div class="row">
@@ -52,16 +52,16 @@
                 <div class="col-6">
                     <h2>Documentation</h2>
                     <div class="list-group">
-                      <a href="#" class="list-group-item list-group-item-action">Release Note</a>
-                      <a href="#" class="list-group-item list-group-item-action">Technical Note</a>
+                      <a href="{{release.releaseNotes}}" class="list-group-item list-group-item-action">Release Note</a>
+                      <a href="{{release.technicalNotes}}" class="list-group-item list-group-item-action">Technical Note</a>
                     </div>
                 </div>
                 <div class="col-6">
                     <h2>Accounts</h2>
                     <div class="list-group">
-                      <a href="#" class="list-group-item list-group-item-action">TGE</a>
-                      <a href="#" class="list-group-item list-group-item-action">Bell</a>
-                      <a href="#" class="list-group-item list-group-item-action">Dialog</a>
+                        {% for account in accounts %}
+                          <a href="../../account/{{account.id}}/1/1" class="list-group-item list-group-item-action">{{account.name}}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
