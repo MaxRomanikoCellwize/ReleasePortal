@@ -43,15 +43,18 @@ def release(request, release_id):
     template = loader.get_template('releasebot/release.html')
     release = Releases.objects.all().filter(id=release_id).order_by('-order').get()
     accountReleases = AccountReleases.objects.all().order_by('-date')
+    table=[]
     accounts = []
     for accountRelease in accountReleases:
         productRelease = accountRelease.productReleaseId
         release = productRelease.releaseId
         if str(release.id) == release_id:
             accounts.append(accountRelease.accountId)
+            table.append(productRelease)
     context = {
         'release': release,
-        'accounts': set(accounts)
+        'accounts': set(accounts),
+        'table': set(table)
     }
     return HttpResponse(template.render(context, request))
 

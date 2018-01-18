@@ -31,18 +31,14 @@
                         </tr>
                       </thead>
                       <tbody>
+                      {% for release in table %}
                         <tr>
-                          <th scope="row">SON</th>
-                          <td>17.1</td>
-                          <td>SP1</td>
-                          <td>2345</td>
+                          <th scope="row">{{release.productId.name}}</th>
+                          <td>{{release.buildNumber}}</td>
+                          <td></td>
+                          <td></td>
                         </tr>
-                        <tr>
-                          <th scope="row">Policy Studio</th>
-                          <td>18.1</td>
-                          <td>SP1</td>
-                          <td>2345</td>
-                        </tr>
+                      {% endfor %}
                       </tbody>
                     </table>
                 </div>
