@@ -61,12 +61,14 @@
                         </tr>
                       </thead>
                       <tbody>
+                      {% for build in table %}
                         <tr>
-                          <th scope="row">18.1</th>
-                          <td>2018/1/1</td>
-                          <td>SP1</td>
-                          <td>2345</td>
+                          <th scope="row">{{build.releaseName}}</th>
+                          <td>{{build.releaseDate}}</td>
+                          <td>{{build.servicePackName}}</td>
+                          <td>{{build.servicePackDate}}</td>
                         </tr>
+                      {% endfor %}
                       </tbody>
                     </table>
                 </div>
