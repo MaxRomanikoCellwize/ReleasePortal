@@ -9,6 +9,7 @@ from .models import Products
 from .models import ProductReleases
 from .models import Accounts
 from .models import AccountReleases
+from .models import ServicePacks
 
 
 # Create your views here.
@@ -20,11 +21,14 @@ def index(request):
     products = Products.objects.all().order_by('-order')
     accountReleases = AccountReleases.objects.all().order_by('-date')
     result = []
+    seenAccounts = []
     for accountRelease in accountReleases:
         account = accountRelease.accountId
         productRelease = accountRelease.productReleaseId
         release = productRelease.releaseId
-        result.append({'accountName': account.name, 'accountId': account.id, 'releaseName': release.name, 'buildNumber': productRelease.buildNumber })
+        if account.id not in seenAccounts:
+            result.append({'accountName': account.name, 'accountId': account.id, 'releaseName': release.name, 'buildNumber': productRelease.buildNumber })
+            seenAccounts.append(account.id)
 
     context = {
         'releases': releases,
@@ -45,7 +49,16 @@ def release(request, release_id):
 
 def account(request, account_id, environment_id, product_id):
     template = loader.get_template('releasebot/account.html')
+    if environment_id==1:
+        accountReleases = AccountReleases.objects.all().filter(target='Production').order_by('-date')
+    else:
+        accountReleases = AccountReleases.objects.all().filter(target='Pre-Production').order_by('-date')
     table = []
+    for accountRelease in accountReleases:
+        productRelease = accountRelease.productReleaseId
+        release = productRelease.releaseId
+        servicePack = ServicePacks.objects.all().filter()
+        table.append({'releaseName': release.name, 'releaseDate': release.date})
     context = {
         'account': Accounts.objects.all().filter(id=account_id).get(),
         'environment': environment_id,
