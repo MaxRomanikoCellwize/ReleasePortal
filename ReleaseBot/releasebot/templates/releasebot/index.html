@@ -25,7 +25,7 @@
                     <h2 class="text-center">Releases</h2>
                     <div class="list-group limit-height">
                         {% for release in releases %}
-                            <a href="{% url 'release' release.id %}" class="list-group-item list-group-item-action">{{ release.name }}</a>
+                            <a href="release/{{ release.id }}" class="list-group-item list-group-item-action">{{ release.name }}</a>
                         {% endfor %}
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                     <h2 class="text-center">Weekly builds</h2>
                     <div class="list-group limit-height">
                         {% for release in weeklys %}
-                            <a href="{% url 'release' release.id %}" class="list-group-item list-group-item-action">{{ release.name }}</a>
+                            <a href="release/{{ release.id }}" class="list-group-item list-group-item-action">{{ release.name }}</a>
                         {% endfor %}
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                           <template v-for="build in builds">
                               <th scope="row">[[build.account]]</th>
                               <td>[[build.release]]</td>
-                              <td>[[build.buildnumber]]</td>
+                              <td>[[build.name]]</td>
                           </template>
                         </tr>
                       </tbody>
@@ -80,9 +80,6 @@
             </div>
         </div>
     </div>
-    <script>
-        var builds = {{builds}};
-    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>

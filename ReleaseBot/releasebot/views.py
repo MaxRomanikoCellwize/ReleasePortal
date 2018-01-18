@@ -6,19 +6,22 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import Releases
 from .models import Products
+from .models import ProductReleases
 
 
 # Create your views here.
 def index(request):
     template = loader.get_template('releasebot/index.html')
-    #releases = Releases.objects.all().filter(type="Official").order_by('-order')
-    #weeklys = Releases.objects.all().filter(type='Weekly').order_by('-order')
+    releases = Releases.objects.all().filter(type="Official").order_by('-order')
+    weeklys = Releases.objects.all().filter(type="Weekly").order_by('-order')
     products = Products.objects.all().order_by('-order')
+    allReleases = Releases.objects.all()
+
     context = {
-        'releases': '',
-        'weeklys': '',
+        'releases': releases,
+        'weeklys': weeklys,
         'products': products,
-        'builds': '',
+        'builds': allReleases,
     }
     return HttpResponse(template.render(context, request))
 
