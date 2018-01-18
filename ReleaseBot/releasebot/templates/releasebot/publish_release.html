@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>ReleaseBot</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'releasebot/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'releasebot/bootstrap.css' %}" />
+    <script src="{% static 'releasebot/vue.js' %}"></script>
+    <script src="{% static 'releasebot/core.js' %}" defer></script>
+  </head>
+
+  <body>
+    <div id="app">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Publish a New Release</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div style="display: flex; justify-content: center">
+        <table style="display: flex; justify-content: center; flex-direction: column">
+            <table>
+                <tr class="inputs">
+                    <td><label for="input1">Release Name:</label></td> <td><input type="text" id="input1"></td>
+                </tr>
+                <tr class="inputs">
+                    <td><label for="input1">Date:</label></td> <td><input type="text" id="input1" value="2018-01-18"></td>
+                </tr>
+                <tr class="inputs">
+                    <td><label for="input1">Build Number:</label></td> <td><input type="text" id="input1"></td>
+                </tr>
+                <tr class="inputs">
+                    <td><label for="input1">Release Notes:</label></td> <td><input type="text" id="input1"></td>
+                </tr>
+                <tr class="inputs">
+                    <td><label for="input1">Technical Notes:</label></td> <td><input type="text" id="input1"></td>
+                </tr>
+
+
+            </table>
+
+
+        </div>
+    </div>
+<form action="../success" align="center">
+                <input type="submit" value="Publish" />
+            </form>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+  </body>
+</html>
