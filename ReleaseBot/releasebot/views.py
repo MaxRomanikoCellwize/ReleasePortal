@@ -49,16 +49,22 @@ def release(request, release_id):
 
 def account(request, account_id, environment_id, product_id):
     template = loader.get_template('releasebot/account.html')
-    if environment_id==1:
+    if environment_id=='1':
         accountReleases = AccountReleases.objects.all().filter(target='Production').order_by('-date')
     else:
         accountReleases = AccountReleases.objects.all().filter(target='Pre-Production').order_by('-date')
     table = []
     for accountRelease in accountReleases:
         productRelease = accountRelease.productReleaseId
-        release = productRelease.releaseId
-        servicePack = ServicePacks.objects.all().filter()
-        table.append({'releaseName': release.name, 'releaseDate': release.date})
+        if str(productRelease.productId.id) == product_id:
+            release = productRelease.releaseId
+            servicePacks = ServicePacks.objects.all().filter(productReleaseId=productRelease.id).order_by('-order')
+            if servicePacks.count() > 0:
+                servicePack = servicePacks[:1].get()
+                table.append({'releaseName': release.name, 'releaseDate': release.date, 'servicePackName': servicePack.name, 'servicePackDate': servicePack.date})
+            else:
+                table.append({'releaseName': release.name, 'releaseDate': release.date, 'servicePackName': '',
+                              'servicePackDate': ''})
     context = {
         'account': Accounts.objects.all().filter(id=account_id).get(),
         'environment': environment_id,
