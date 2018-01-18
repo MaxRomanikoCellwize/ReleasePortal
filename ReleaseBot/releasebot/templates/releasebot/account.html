@@ -16,20 +16,36 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="text-center">TGE Details</h1>
+                    <h1 class="text-center">{{ account.name }} Account Details</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <div class="list-group">
-                      <a href="#" class="list-group-item list-group-item-action active">Product</a>
-                      <a href="#" class="list-group-item list-group-item-action">Pre-Product</a>
+                      <a href="../../1/{{product}}" class="list-group-item list-group-item-action
+                      {% ifequal '1' environment %}
+                        active
+                      {% endifequal %}
+                        ">Production</a>
+                      <a href="../../2/{{product}}" class="list-group-item list-group-item-action
+                        {% ifequal '2' environment %}
+                        active
+                      {% endifequal %}
+                        ">Pre-Production</a>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="list-group">
-                      <a href="#" class="list-group-item list-group-item-action active">SON</a>
-                      <a href="#" class="list-group-item list-group-item-action">Policy Studio</a>
+                      <a href="../1" class="list-group-item list-group-item-action
+                        {% ifequal '1' product %}
+                        active
+                      {% endifequal %}
+                        ">SON</a>
+                      <a href="../2" class="list-group-item list-group-item-action
+  {% ifequal '2' product %}
+                        active
+                      {% endifequal %}
+">Policy Studio</a>
                     </div>
                 </div>
             </div>
