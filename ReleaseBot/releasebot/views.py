@@ -18,18 +18,19 @@ def index(request):
     releases = Releases.objects.all().filter(type="Official").order_by('-order')
     weeklys = Releases.objects.all().filter(type="Weekly").order_by('-order')
     products = Products.objects.all().order_by('-order')
-    allReleases = ProductReleases.objects.all()
-    #result = []
-    #for productRelease in allReleases:
-    #    accountRelease = AccountReleases.objects.all().filter(id=productRelease.productId).get()
-    #    account = Accounts.objects.all().filter(id=accountRelease).get()
-    #    type('', (object,), {'account': account.name, 'b': 6, 'c': 7})()
+    accountReleases = AccountReleases.objects.all().order_by('-date')
+    result = []
+    for accountRelease in accountReleases:
+        account = accountRelease.accountId
+        productRelease = accountRelease.productReleaseId
+        release = productRelease.releaseId
+        result.append({'accountName': account.name, 'accountId': account.id, 'releaseName': release.name, 'buildNumber': productRelease.buildNumber })
 
     context = {
         'releases': releases,
         'weeklys': weeklys,
         'products': products,
-  #      'builds': allReleases,
+        'builds': result,
     }
     return HttpResponse(template.render(context, request))
 

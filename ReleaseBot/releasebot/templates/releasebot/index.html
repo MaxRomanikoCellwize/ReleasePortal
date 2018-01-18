@@ -64,13 +64,13 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <template v-for="build in builds">
-                              <th scope="row">[[build.account]]</th>
-                              <td>[[build.release]]</td>
-                              <td>[[build.name]]</td>
-                          </template>
-                        </tr>
+                          {% for build in builds %}
+                          <tr>
+                              <th scope="row"><a href="account/{{build.accountId}}/1/1">{{build.accountName}}</a></th>
+                              <td>{{build.releaseName}}</td>
+                              <td>{{build.buildNumber}}</td>
+                          </tr>
+                          {% endfor %}
                       </tbody>
                     </table>
                 </div>
